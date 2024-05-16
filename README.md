@@ -8,7 +8,7 @@
 <div align="center">
   🌈 A simple app to manage custom objects & relationships within Zendesk.
   <br>
-  For Custom Object V1 [Click Here](https://github.com/ashwinkshenoy/zendesk-custom-object-manager)
+  For Custom Object V1 <a href="https://github.com/ashwinkshenoy/zendesk-custom-object-manager">Click Here</a>
 </div>
 
 <br /><br />
