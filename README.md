@@ -1,5 +1,5 @@
 <h1 align="center">
-  Zendesk Custom Object Manager
+  Zendesk Custom Object Manager V2
   <br />
   <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg">
   <img src="https://img.shields.io/badge/Made%20With-Love-orange.svg">
@@ -7,7 +7,10 @@
 
 <div align="center">
   🌈 A simple app to manage custom objects & relationships within Zendesk.
+  <br>
+  For Custom Object V1 [Click Here](https://github.com/ashwinkshenoy/zendesk-custom-object-manager)
 </div>
+
 <br /><br />
 
 ## Introduction
