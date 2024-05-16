@@ -1,0 +1,40 @@
+{
+  "name": "Custom Object Manager v2",
+  "version": "2.0.0",
+  "frameworkVersion": "2.0",
+  "author": {
+    "name": "Ashwin Shenoy",
+    "email": "devloper77@gmail.com",
+    "url": "https://www.buymeacoffee.com/ashwinshenoy"
+  },
+  "defaultLocale": "en",
+  "private": true,
+  "gaID": "G-KGFQZW6B5Q",
+  "location": {
+    "support": {
+      "nav_bar": "https://ashwinshenoy.com/zendesk-custom-object-manager-v2/assets/iframe.html"
+    }
+  },
+  "parameters": [
+    {
+      "name": "IS_PRODUCTION",
+      "type": "hidden",
+      "default": "true"
+    },
+    {
+      "name": "showLogs",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "name": "noOfRecords",
+      "type": "text",
+      "default": 10
+    },
+    {
+      "name": "showRelationships",
+      "type": "checkbox",
+      "default": true
+    }
+  ]
+}
