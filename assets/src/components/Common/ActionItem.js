@@ -83,7 +83,20 @@ const ActionItem = {
     handleScroll() {
       const dropdown = this.$refs['actionButton'];
       const parentWrapper = document.querySelector('.table-responsive');
-      if (!parentWrapper) return;
+
+      // Check if the parent or any ancestor has the class "table-responsive"
+      let ancestor = dropdown;
+      let hasTableResponsiveClass = false;
+
+      while (ancestor) {
+        if (ancestor.classList && ancestor.classList.contains('table-responsive')) {
+          hasTableResponsiveClass = true;
+          break;
+        }
+        ancestor = ancestor.parentElement;
+      }
+
+      if (!hasTableResponsiveClass) return;
 
       // Check if the dropdown has hit the bottom of its parent wrapper
       const dropdownRect = dropdown.getBoundingClientRect();

@@ -182,7 +182,7 @@ const Store = new Vuex.Store({
     async searchCO({ state, dispatch }, cursor = null) {
       dispatch('setState', { key: 'objectTableState', value: 'Loading' });
       try {
-        const response = await ZDClient.customObject().search(cursor, state.searchText);
+        const response = await ZDClient.customObject().search(state.selectedObjectType, cursor, state.searchText);
         console.log('---Search Records---\n', response);
 
         const records = response.custom_object_records;

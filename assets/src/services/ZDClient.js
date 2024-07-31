@@ -148,7 +148,8 @@ const ZDClient = {
 
     /**
      * API call to delete record
-     * @param {Object} payload
+     * @param {String} objectName
+     * @param {String} id
      * @returns {Object}
      */
     instance.delete = (objectName, id) => {
@@ -163,14 +164,16 @@ const ZDClient = {
 
     /**
      * API call to search records
-     * @param {Object} searchQuery
+     * @param {String} objectName
+     * @param {String} cursorUrl
+     * @param {String} searchQuery
      * @returns {Object}
      */
-    instance.search = (cursorUrl, searchQuery) => {
+    instance.search = (objectName, cursorUrl, searchQuery) => {
       return this.request(
         cursorUrl
           ? cursorUrl
-          : `/api/v2/custom_objects/rule_mapping/records/search?page[size]=100&query=${searchQuery}`,
+          : `/api/v2/custom_objects/${objectName}/records/search?page[size]=100&query=${searchQuery}`,
         {},
         {
           method: 'GET',
