@@ -124,6 +124,14 @@ hr {
   top: 22px;
 }
 
+.action-item__wrapper.vs-action__menu--top {
+  bottom: 200px;
+  top: auto;
+  .c-menu {
+    box-shadow: 0px -9px 30px 0 rgba(4, 68, 77, 0.15);
+  }
+}
+
 .c-menu {
   min-width: 170px;
   z-index: 100;
