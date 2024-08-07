@@ -267,6 +267,7 @@ hr {
 
 textarea {
   resize: vertical;
+  field-sizing: content;
 }
 
 .modal-content h1 {
