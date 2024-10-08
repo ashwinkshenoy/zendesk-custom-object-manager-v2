@@ -238,6 +238,39 @@ const ZDClient = {
     };
 
     /**
+     * Legacy create ZD jobs
+     * @param {String} type
+     * @param {String} action
+     * @param {Array} recordsId
+     * @returns {Object}
+     */
+    instance.legacyCreateJob = (type, action, records) => {
+      const requestData = {
+        type: type,
+        action: action,
+        data: records,
+      };
+      return this.request('/api/sunshine/jobs', JSON.stringify(requestData), {
+        method: 'POST',
+      });
+    };
+
+    /**
+     * Legacy Get Job status
+     * @param {Number} id
+     * @returns
+     */
+    instance.legacyGetJobStatus = id => {
+      return this.request(
+        `/api/sunshine/jobs/${id}`,
+        {},
+        {
+          method: 'GET',
+        },
+      );
+    };
+
+    /**
      * Create ZD jobs
      * @param {Array} recordsId
      * @param {String} type

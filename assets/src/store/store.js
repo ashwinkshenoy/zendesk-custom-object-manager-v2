@@ -107,6 +107,8 @@ const Store = new Vuex.Store({
         return Promise;
       } catch (error) {
         console.error(error);
+        dispatch('setState', { key: 'objectState', value: 'NoObjects' });
+        dispatch('setState', { key: 'relationState', value: 'NoRelationTypes' });
         throw error;
       }
     },

@@ -158,16 +158,16 @@ const RelationshipDelete = {
       }
 
       if (batchOfBatches.length > 0) {
-        const createJob = await ZDClient.customObject().createJob(
-          batchOfBatches[currentBatchIndex],
+        const createJob = await ZDClient.customObject().legacyCreateJob(
           'relationships',
           'delete',
+          batchOfBatches[currentBatchIndex],
         );
         console.log('Create Job:', createJob);
 
         const jobCheckInterval = setInterval(async () => {
           console.log('Checking job status...');
-          const getJobStatus = await ZDClient.customObject().getJobStatus(createJob.data.id);
+          const getJobStatus = await ZDClient.customObject().legacyGetJobStatus(createJob.data.id);
           console.log('Get Job Status:', getJobStatus);
 
           if (getJobStatus.data.job_status === 'completed' || getJobStatus.data.job_status === 'failed') {

@@ -12,7 +12,16 @@ const template = `
         v-else-if="objectState === 'NoObjects' && relationState === 'NoRelationTypes'">
         <img src="./images/IconNotFound.svg" alt="No Records" class="empty-image">
         <div class="u-bold">No Custom Object Created</div>
-        <p class="u-mt-xs">When you create an Object/Relationship, you'll see it here.</p>
+        <p class="u-mt-xs u-light">When you create an Object/Relationship, you'll see it here.</p>
+        <vs-button 
+          class="u-decoration-none u-mt-sm"
+          :href="createCoLink()"
+          target="_blank"
+          size="small"
+          data-name="ZD: Create CO Link">
+          <garden-icon icon="zd-plus" class="download-icon"></garden-icon>
+          Create Custom Objects
+        </vs-button>
         <a href="https://www.buymeacoffee.com/ashwinshenoy?utm_source=zd_custom_object" target="_blank" class="u-mt-xxl">
           <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="width: 140px">
         </a>
@@ -99,6 +108,7 @@ import ObjectRecordForm from './Object/ObjectRecordForm.js';
 import RelationshipRecordSearch from './Relationship/RelationshipRecordSearch.js';
 import RelationshipRecordTable from './Relationship/RelationshipRecordTable.js';
 import RelationshipRecordForm from './Relationship/RelationshipRecordForm.js';
+import GardenIcon from './Common/GardenIcon.js';
 import ZDClient from '../services/ZDClient.js';
 
 const App = {
@@ -112,6 +122,7 @@ const App = {
     RelationshipRecordSearch,
     RelationshipRecordTable,
     RelationshipRecordForm,
+    GardenIcon,
   },
 
   data() {
@@ -140,11 +151,15 @@ const App = {
     ...Vuex.mapActions(['setState', 'getObjectTypes', 'getRelationshipTypes']),
 
     async init() {
-      await this.getObjectTypes();
-      if (this.isShowRelationships) {
-        await this.getRelationshipTypes();
-      } else {
-        this.setState({ key: 'relationState', value: 'NoRelationTypes' });
+      try {
+        await this.getObjectTypes();
+        if (this.isShowRelationships) {
+          await this.getRelationshipTypes();
+        } else {
+          this.setState({ key: 'relationState', value: 'NoRelationTypes' });
+        }
+      } catch (error) {
+        console.log('Custom objects error:', error?.responseJSON?.error?.message || error);
       }
     },
 
@@ -156,6 +171,15 @@ const App = {
       this.setState({ key: 'isRelationshipRecordForm', value: false });
       this.setState({ key: 'currentRecord', value: {} });
       this.setState({ key: 'recordAction', value: 'new' });
+    },
+
+    /**
+     * Bulk upload redirect link
+     * @returns {String}
+     */
+    createCoLink() {
+      const bulkImportURL = `https://${ZDClient.app.domain}.zendesk.com/admin/objects-rules/custom-objects/objects`;
+      return bulkImportURL;
     },
   },
 };
