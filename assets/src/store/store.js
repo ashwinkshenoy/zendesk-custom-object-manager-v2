@@ -133,6 +133,7 @@ const Store = new Vuex.Store({
         return Promise;
       } catch (error) {
         console.error(error);
+        dispatch('setState', { key: 'relationState', value: 'NoRelationTypes' });
         throw error;
       }
     },
